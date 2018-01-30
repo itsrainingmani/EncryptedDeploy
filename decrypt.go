@@ -25,6 +25,8 @@ func main() {
 	uname, pwd := creds[0], creds[1]
 	fmt.Println(uname, pwd)
 
-	out, err := exec.Command("./sample.ps1", credsForPowershell).Output()
+	credsForPowershell = ".\\sample.ps1 " + credsForPowershell
+
+	out, _ := exec.Command("powershell", credsForPowershell).Output()
 	fmt.Println(out)
 }
