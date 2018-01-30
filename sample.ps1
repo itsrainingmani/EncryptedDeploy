@@ -1,5 +1,5 @@
-﻿$usr = "DESKTOP-AKD3TDD\Mani"
-$passwd = "Soph0n.."
+﻿$usr = $args[0]
+$passwd = $args[1]
 
 $credentials = New-Object System.Management.Automation.PSCredential -ArgumentList @($usr,(ConvertTo-SecureString -String $passwd -AsPlainText -Force))
 

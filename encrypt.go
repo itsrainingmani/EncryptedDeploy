@@ -44,8 +44,6 @@ func main() {
 	}
 
 	ciphertext, err := filecrypto.Seal(passBytes, b)
-
-	fmt.Println(ciphertext)
-
+	//fmt.Println(ciphertext)
 	ioutil.WriteFile("encrypted.txt", ciphertext, 0644)
 }
