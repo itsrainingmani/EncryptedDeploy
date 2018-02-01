@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/base64"
 	"fmt"
 	"io/ioutil"
 	"os/exec"
@@ -15,7 +16,17 @@ func main() {
 		fmt.Print(err)
 	}
 
-	passBytes, err := ioutil.ReadFile("pass.txt")
+	var passString string
+
+	fmt.Println("Please enter the passphrase:")
+	fmt.Scan(&passString)
+
+	// passBytes, err := ioutil.ReadFile("pass.txt")
+	// if err != nil {
+	// 	fmt.Print(err)
+	// }
+
+	passBytes, err := base64.StdEncoding.DecodeString(passString)
 	if err != nil {
 		fmt.Print(err)
 	}

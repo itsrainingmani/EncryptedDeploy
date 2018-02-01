@@ -5,7 +5,6 @@ import (
 	"encoding/base64"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"os"
 
 	"github.com/tsmanikandan/EncryptedDeploy/crypto"
@@ -16,7 +15,7 @@ func generatePassword() []byte {
 
 	_, err := rand.Read(key)
 	if err != nil {
-		log.Fatalln(err.Error())
+		fmt.Println(err.Error())
 	}
 	fmt.Println(key)
 	return key
@@ -29,7 +28,7 @@ func main() {
 
 	b, err := ioutil.ReadFile("cred.txt")
 	if err != nil {
-		log.Fatalln(err.Error())
+		fmt.Println(err.Error())
 	}
 
 	ciphertext, err := crypto.Seal(passBytes, b)
@@ -40,7 +39,7 @@ func main() {
 
 	file, err := os.Create("passkey.txt")
 	if err != nil {
-		log.Fatalln("Cannot create file", err)
+		fmt.Println("Cannot create file", err)
 	}
 	defer file.Close()
 
