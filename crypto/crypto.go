@@ -1,6 +1,6 @@
 // Package crypto provides message security using the NaCl secretbox
 // ciphers and scrypt-derived keys from passphrases.
-package filecrypto
+package crypto
 
 import (
 	"crypto/rand"
@@ -147,20 +147,3 @@ func Zero(in []byte) {
 		in[i] = 0
 	}
 }
-
-//func main() {
-//	//b, err := ioutil.ReadFile("cred.txt")
-////	//if err != nil {
-////	//	fmt.Print(err)
-////	//}
-//	pas := []byte("this is the password")
-//	//ciphertext,err := Seal(pas, b)
-//	//ioutil.WriteFile("cipher.txt", ciphertext, 0644)
-//
-//	b1, err := ioutil.ReadFile("cipher.txt")
-//	if err != nil {
-//		fmt.Print(err)
-//	}
-//	decipheredtext, err := Open(pas, b1)
-//	fmt.Println(string(decipheredtext))
-//}

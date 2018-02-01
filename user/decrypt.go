@@ -1,11 +1,12 @@
 package main
 
 import (
-	"io/ioutil"
 	"fmt"
-	"EncryptedDeploy/filecrypto"
-	"strings"
+	"io/ioutil"
 	"os/exec"
+	"strings"
+
+	"github.com/tsmanikandan/EncryptedDeploy/crypto"
 )
 
 func main() {
@@ -19,7 +20,7 @@ func main() {
 		fmt.Print(err)
 	}
 
-	decipheredtext, _ := filecrypto.Open(passBytes, b)
+	decipheredtext, _ := crypto.Open(passBytes, b)
 	credsForPowershell := string(decipheredtext)
 	creds := strings.Split(string(decipheredtext), " ")
 	uname, pwd := creds[0], creds[1]
