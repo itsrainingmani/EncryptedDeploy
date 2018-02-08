@@ -16,7 +16,7 @@ func findProcessByName(procName string) (bool, error) {
 	for _, p := range procList {
 		// fmt.Println(p.Executable())
 		if p.Executable() == procName {
-			fmt.Println("Process found", p.Executable())
+			// fmt.Println("Process found", p.Executable())
 			return true, nil
 		}
 	}
@@ -25,6 +25,7 @@ func findProcessByName(procName string) (bool, error) {
 
 //WaitForProcToExit is a function that runs a loop to determine if the process is running or not
 func WaitForProcToExit(procName string, c chan bool) {
+	fmt.Println("Beginning to monitor process state...")
 	for {
 		time.Sleep(100 * time.Millisecond)
 		procCheck, err := findProcessByName(procName)
@@ -33,7 +34,7 @@ func WaitForProcToExit(procName string, c chan bool) {
 			close(c)
 			return
 		}
-		fmt.Println("Process is still running")
+		// fmt.Println("Process is still running")
 		c <- procCheck
 	}
 }
