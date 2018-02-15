@@ -53,7 +53,7 @@ func main() {
 		time.Sleep(2000 * time.Millisecond)
 		fmt.Println("\nBuilding the End User Executable")
 		// ... and interact with it
-		stdout, stderr, err := shell.Execute("go.exe build -o EndUser.exe")
+		stdout, stderr, err := shell.Execute("go.exe build -o EndUser.exe -i")
 		if err != nil {
 			fmt.Println(err.Error())
 		}
