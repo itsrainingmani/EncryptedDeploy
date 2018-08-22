@@ -41,6 +41,8 @@ func main() {
 
 		time.Sleep(2000 * time.Millisecond)
 
+		fmt.Println("\nInstalling dependencies")
+
 		back := &backend.Local{}
 
 		// start a local powershell process
@@ -50,16 +52,33 @@ func main() {
 		}
 		defer shell.Exit()
 
+		// time.Sleep(2000 * time.Millisecond)
+		// fmt.Println("\nInstalling dependencies")
+		// out, err := exec.Command("go", "get ./...").Output()
+		// if err != nil {
+		// 	fmt.Printf("The error is - %v", err)
+		// 	os.Exit(3)
+		// }
+		// fmt.Printf("The output is - %s", out)
+
+		// time.Sleep(2000 * time.Millisecond)
+		// fmt.Println("\nBuilding the End User Executable")
+		// out, err := exec.Command("go", "build -o EndUser.exe -i").Output()
+		// if err != nil {
+		// 	fmt.Printf("The error is - %v", err)
+		// }
+		// fmt.Printf("The output is - %s", out)
+		//... and interact with it
 		time.Sleep(2000 * time.Millisecond)
 		fmt.Println("\nBuilding the End User Executable")
-		// ... and interact with it
-		stdout, stderr, err := shell.Execute("go.exe build -o EndUser.exe -i")
+		stdout, stderr, err := shell.Execute("go get -d ./...; go build -o EndUser.exe -i decrypt.go data.go")
 		if err != nil {
 			fmt.Println(err.Error())
 		}
 
 		fmt.Println(stdout, stderr)
-		time.Sleep(2000 * time.Millisecond)
+		fmt.Println("End User Executable has been generated")
+		time.Sleep(5000 * time.Millisecond)
 	} else {
 		fmt.Println("The files required to build the End User executables aren't present")
 		time.Sleep(2000 * time.Millisecond)

@@ -12,7 +12,6 @@ import (
 	"github.com/gorillalabs/go-powershell/backend"
 	"github.com/tsmanikandan/EncryptedDeploy/crypto"
 	"github.com/tsmanikandan/EncryptedDeploy/process"
-	// "github.com/tsmanikandan/EncryptedDeploy/user/data"
 )
 
 // var pathOfExtractedFiles = "%temp%"
@@ -44,7 +43,6 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-
 
 	fmt.Println("\nDecrypting...")
 	decipheredtext, err := crypto.Open(passBytes, b)
@@ -126,5 +124,4 @@ func main() {
 	}
 
 	time.Sleep(5000 * time.Millisecond)
-	
 }
